@@ -1,0 +1,69 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FRED Economic Data API",
+    "version": "1.0.0",
+    "description": "Consulta indicadores económicos de la Reserva Federal (FRED) usando series ID."
+  },
+  "servers": [
+    {
+      "url": "https://api.stlouisfed.org/fred"
+    }
+  ],
+  "paths": {
+    "/series/observations": {
+      "get": {
+        "operationId": "getSeriesObservations",
+        "summary": "Obtiene observaciones para una serie FRED",
+        "parameters": [
+          {
+            "name": "series_id",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "ID de la serie FRED (ej: CPIAUCSL, UNRATE, FEDFUNDS)"
+          },
+          {
+            "name": "api_key",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Tu API key de FRED"
+          },
+          {
+            "name": "file_type",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "default": "json" }
+          },
+          {
+            "name": "observation_start",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "format": "date" },
+            "description": "Fecha de inicio (formato YYYY-MM-DD)"
+          },
+          {
+            "name": "observation_end",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "format": "date" },
+            "description": "Fecha de fin (formato YYYY-MM-DD)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Observaciones exitosamente obtenidas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
