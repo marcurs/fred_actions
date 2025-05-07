@@ -20,35 +20,48 @@
             "name": "series_id",
             "in": "query",
             "required": true,
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "description": "ID de la serie FRED (ej: CPIAUCSL, UNRATE, FEDFUNDS)"
           },
           {
             "name": "api_key",
             "in": "query",
             "required": true,
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "description": "Tu API key de FRED"
           },
           {
             "name": "file_type",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "default": "json" }
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
           },
           {
             "name": "observation_start",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "format": "date" },
-            "description": "Fecha de inicio (formato YYYY-MM-DD)"
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "Fecha de inicio (YYYY-MM-DD)"
           },
           {
             "name": "observation_end",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "format": "date" },
-            "description": "Fecha de fin (formato YYYY-MM-DD)"
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "Fecha de fin (YYYY-MM-DD)"
           }
         ],
         "responses": {
@@ -57,7 +70,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "additionalProperties": true
                 }
               }
             }
@@ -67,3 +81,4 @@
     }
   }
 }
+
